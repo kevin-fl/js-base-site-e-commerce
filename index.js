@@ -156,3 +156,68 @@ affichageDescription3.innerHTML = description3;
 affichageOption3.innerHTML = option13;
 affichageUse_For3.innerHTML = use_for3;
 affichagePrice3.innerHTML = price3;
+
+//Produit04------------------------
+
+const productName4 = response[3].productName;
+const description4 = response[3].description;
+const option14 = response[3].option1;
+const use_for4 = response[3].use_for;
+const price4 = response[3].price;
+
+
+//DOM selection pr affichage caracteristique produit 2
+
+const affichageProductName4 = document.querySelector(
+    ".produit4 ul li:nth-child(1) span " );
+const affichageDescription4 = document.querySelector(
+    ".produit4 ul li:nth-child(2) span ");
+const affichageOption4 = document.querySelector(
+    ".produit4 ul li:nth-child(3) span ");
+const affichageUse_For4= document.querySelector(
+    ".produit4 ul li:nth-child(4) span ");
+const affichagePrice4= document.querySelector(
+    ".produit4 ul li:nth-child(5) span ");
+//DOM affichage caracteristique produit2
+
+
+
+affichageProductName4.innerHTML = productName4;
+affichageDescription4.innerHTML = description4;
+affichageOption4.innerHTML = option14;
+affichageUse_For4.innerHTML = use_for4;
+affichagePrice4.innerHTML = price4;
+
+
+
+//Produit05--------------------------------------
+//Produit04------------------------
+
+const productName5 = response[4].productName;
+const description5 = response[4].description;
+const option15 = response[4].option1;
+const use_for5 = response[4].use_for;
+const price5 = response[4].price;
+
+
+//DOM selection pr affichage caracteristique produit 2
+
+const affichageProductName5 = document.querySelector(
+    ".produit5 ul li:nth-child(1) span " );
+const affichageDescription5 = document.querySelector(
+    ".produit5 ul li:nth-child(2) span ");
+const affichageOption5 = document.querySelector(
+    ".produit5 ul li:nth-child(3) span ");
+const affichageUse_For5= document.querySelector(
+    ".produit5 ul li:nth-child(4) span ");
+const affichagePrice5= document.querySelector(
+    ".produit5 ul li:nth-child(5) span ");
+//DOM affichage caracteristique produit2
+
+
+
+affichageProductName5.innerHTML = productName5;
+affichageDescription5.innerHTML = description5;
+affichageOption5.innerHTML = option15;
+affichageUse_For5.innerHTML = use_for5;
+affichagePrice5.innerHTML = price5;
