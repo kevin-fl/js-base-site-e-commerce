@@ -1,0 +1,13 @@
+@mixin style-description-produit{
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    & span {
+    font-weight: normal;
+    font-size: 1rem;
+    }
+}
+
+
+// peut utiliser les mixins au lieu de retaper pour les 5
+//produits , utilise le mot clé @include style-description-produit

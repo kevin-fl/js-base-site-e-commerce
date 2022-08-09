@@ -56,6 +56,12 @@ header .menu ul li {
 
 .produit1 {
   grid-area: produit1;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.produit1 span {
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .produit_photo1 {
@@ -73,6 +79,12 @@ header .menu ul li {
 
 .produit2 {
   grid-area: produit2;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.produit2 span {
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .produit_photo2 {
@@ -90,6 +102,12 @@ header .menu ul li {
 
 .produit3 {
   grid-area: produit3;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.produit3 span {
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .produit_photo3 {
@@ -107,6 +125,12 @@ header .menu ul li {
 
 .produit4 {
   grid-area: produit4;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.produit4 span {
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .produit_photo4 {
@@ -124,6 +148,12 @@ header .menu ul li {
 
 .produit5 {
   grid-area: produit5;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.produit5 span {
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .produit_photo5 {

@@ -5,6 +5,7 @@ const response = [
         productName : "nom produit 1",
         description : "description - lorem ",
         option1:" option 1 produit 1",
+        url_photo : "tunisian_pastery.jpg",
         use_for : "",
         price : 15000
 
@@ -56,6 +57,7 @@ const description = response[0].description;
 const option1 = response[0].option1;
 const use_for = response[0].use_for;
 const price = response[0].price;
+const url = response[0].url_photo;
 //console.log(description);
 //console.log(productName);
 
@@ -73,6 +75,9 @@ const affichageUse_For1= document.querySelector(
     ".produit1 ul li:nth-child(4) span ");
 const affichagePrice1= document.querySelector(
     ".produit1 ul li:nth-child(5) span ");
+const affichageUrl = document.querySelector(
+    ".produit1 ul li:nth-child(0) span");
+
 //console.log(affichageProductName1);
 //console.log(affichageDescription1);
 //console.log(affichageOption1);
@@ -85,6 +90,7 @@ affichageDescription1.innerHTML = description;
 affichageOption1.innerHTML = option1;
 affichageUse_For1.innerHTML = use_for;
 affichagePrice1.innerHTML = price;
+affichageUrl.innerHTML = url;
 
 console.log(productName);
 console.log(description);
@@ -95,7 +101,7 @@ console.log(description);
 // 1ere etape mettre donnée de l api dans variables
 const productName2 = response[1].productName;
 const description2 = response[1].description;
-const option12 = response[1].option1;
+const option12 = response[1].option2;
 const use_for2 = response[1].use_for;
 const price2 = response[1].price;
 
@@ -130,7 +136,7 @@ console.log(productName2);
 
 const productName3 = response[2].productName;
 const description3 = response[2].description;
-const option13 = response[2].option1;
+const option13 = response[2].option3;
 const use_for3 = response[2].use_for;
 const price3 = response[2].price;
 
@@ -161,7 +167,7 @@ affichagePrice3.innerHTML = price3;
 
 const productName4 = response[3].productName;
 const description4 = response[3].description;
-const option14 = response[3].option1;
+const option14 = response[3].option4;
 const use_for4 = response[3].use_for;
 const price4 = response[3].price;
 
@@ -195,7 +201,7 @@ affichagePrice4.innerHTML = price4;
 
 const productName5 = response[4].productName;
 const description5 = response[4].description;
-const option15 = response[4].option1;
+const option15 = response[4].option5;
 const use_for5 = response[4].use_for;
 const price5 = response[4].price;
 

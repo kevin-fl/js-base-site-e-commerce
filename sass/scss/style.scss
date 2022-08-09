@@ -1,4 +1,5 @@
 @import "./media";
+@import "./mixins";
 @import "./variables";
 
 * {
@@ -75,6 +76,7 @@ header{
 
 .produit1{
     grid-area: produit1;
+    @include style-description-produit;
 
 }
 
@@ -93,6 +95,7 @@ header{
 
 .produit2{
     grid-area: produit2;
+    @include style-description-produit;
 }
 
 .produit_photo2 {
@@ -109,10 +112,12 @@ header{
 
 .produit3{
     grid-area: produit3;
+    @include style-description-produit;
 }
 
 .produit_photo3 {
     grid-area: produit_photo3;
+   
 }
 
 .produit_photo3 > img {
@@ -125,6 +130,7 @@ header{
 }
 .produit4{
     grid-area: produit4;
+    @include style-description-produit;
 }
 
 .produit_photo4 {
@@ -141,6 +147,7 @@ header{
 }
 .produit5{
     grid-area: produit5;
+    @include style-description-produit;
 }
 
 .produit_photo5 {
