@@ -5,7 +5,7 @@ const response = [
         productName : "nom produit 1",
         description : "description - lorem ",
         option1:" option 1 produit 1",
-        url_photo : "tunisian_pastery.jpg",
+        urlPhoto : "./images/tunisian_pastery3.jpg",
         use_for : "",
         price : 15000
 
@@ -57,10 +57,10 @@ const description = response[0].description;
 const option1 = response[0].option1;
 const use_for = response[0].use_for;
 const price = response[0].price;
-const url = response[0].url_photo;
+const urlPhoto1 = response[0].urlPhoto;
 //console.log(description);
 //console.log(productName);
-
+console.log(urlPhoto1);
 
 
 //DOM selection pr affichage caracteristique produit 1
@@ -75,8 +75,9 @@ const affichageUse_For1= document.querySelector(
     ".produit1 ul li:nth-child(4) span ");
 const affichagePrice1= document.querySelector(
     ".produit1 ul li:nth-child(5) span ");
-const affichageUrl = document.querySelector(
-    ".produit1 ul li:nth-child(0) span");
+const affichageUrlPhoto1 = document.querySelector(".produit_photo1 span");
+    
+
 
 //console.log(affichageProductName1);
 //console.log(affichageDescription1);
@@ -90,8 +91,11 @@ affichageDescription1.innerHTML = description;
 affichageOption1.innerHTML = option1;
 affichageUse_For1.innerHTML = use_for;
 affichagePrice1.innerHTML = price;
-affichageUrl.innerHTML = url;
 
+//affichage photo
+const imageProduit1= `<img src="${urlPhoto1}">`;
+
+affichageUrlPhoto1.insertAdjacentHTML("afterbegin", imageProduit1);
 console.log(productName);
 console.log(description);
 
