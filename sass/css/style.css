@@ -3,6 +3,12 @@
   padding: 0;
   list-style: none;
 }
+* a {
+  text-decoration: none;
+}
+* a:hover {
+  color: gold;
+}
 
 .container {
   width: 100vw;
@@ -40,8 +46,12 @@ header .menu {
 header .menu ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 10px;
+  justify-content: center;
+  margin: 8px;
+}
+header .menu ul li {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .produit1 {
@@ -55,9 +65,9 @@ header .menu ul {
 .produit_photo1 > img {
   object-fit: cover;
   width: 100%;
-  margin: -6px;
+  margin: 0;
   padding-top: -5px;
-  padding-left: 5px;
+  padding-left: 0;
   max-height: 100%;
 }
 
@@ -69,12 +79,30 @@ header .menu ul {
   grid-area: produit_photo2;
 }
 
+.produit_photo2 > img {
+  object-fit: cover;
+  width: 100%;
+  margin: 0;
+  padding-top: -5px;
+  padding-left: 0;
+  max-height: 100%;
+}
+
 .produit3 {
   grid-area: produit3;
 }
 
 .produit_photo3 {
   grid-area: produit_photo3;
+}
+
+.produit_photo3 > img {
+  object-fit: cover;
+  width: 100%;
+  margin: 0;
+  padding-top: -5px;
+  padding-left: 0;
+  max-height: 100%;
 }
 
 .produit4 {
@@ -85,12 +113,30 @@ header .menu ul {
   grid-area: produit_photo4;
 }
 
+.produit_photo4 > img {
+  object-fit: cover;
+  width: 100%;
+  margin: 0;
+  padding-top: -5px;
+  padding-left: 0;
+  max-height: 100%;
+}
+
 .produit5 {
   grid-area: produit5;
 }
 
 .produit_photo5 {
   grid-area: produit_photo5;
+}
+
+.produit_photo5 > img {
+  object-fit: cover;
+  width: 100%;
+  margin: 0;
+  padding-top: -5px;
+  padding-left: 0;
+  max-height: 100%;
 }
 
 footer {
