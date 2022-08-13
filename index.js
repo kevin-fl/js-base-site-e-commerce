@@ -47,15 +47,18 @@ const response = [
 
     },
     
-]
+];
+
+
+/*
 console.log(response);
 console.log(response[0].price);
-
+*/
 //Mettre les donnees sur la page index.html------
 
 //---produit01----
 //1ere etape , dataAPI mettre les donnees de l api dans les variables
-
+/*
 const productName = response[0].productName;
 const description = response[0].description;
 const option1 = response[0].option1;
@@ -65,7 +68,107 @@ const urlPhoto1 = response[0].urlPhoto;
 //console.log(description);
 //console.log(productName);
 console.log(urlPhoto1);
+*/
+//declaration de variable 
+let productName = [];
+let description = [];
+let option1 = [];
+let use_for = [];
+let price = [];
+let urlPhoto = [];
 
+console.log(productName);
+
+// page dynamique => fonction qui va afficher les produits dans la page automatiquement
+
+function affichageProduits(response){
+    //seelection element du DOM
+const positionElement = document.querySelector(".container-produits");
+ 
+
+//mettre les données dans les variables 
+response.forEach((element , i ) =>{
+productName[i] = element.productName
+});
+
+console.log(positionElement);
+
+}
+
+affichageProduits();
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 //DOM selection pr affichage caracteristique produit 1
 
@@ -265,3 +368,4 @@ affichagePrice5.innerHTML = price5;
 // afficher l image 5
 const imageProduit5 = `<img src = "${urlPhoto5}">`;
 affichageUrlPhoto5.insertAdjacentHTML("afterbegin", imageProduit5);
+*/
