@@ -78,7 +78,7 @@ const positionElement = document.querySelector(".container-produits");
 
 // boucle for pour afficher tout les objets dans page html , donc dans le website
 
-for(i=0 ; i < response.length ; i++){
+for(i=0 ; i < affichageProduits.length ; i++)
     
     
     //mettre les données que j ai en haut dans la boucle forEach recup tt les produits 
@@ -93,8 +93,9 @@ for(i=0 ; i < response.length ; i++){
            // on va mettre code html dedans , grace au literaux de gabarits , back tick
            
            // display(affichage) of all the objects on the website page 
-           
-           structureProduits = `
+           //tips pr un affichage correct par rapport aux boucles 
+           // ↓ ou de cette maniere la fonctionne tres bien structureProduits += 
+           structureProduits = structureProduits +  `    
            <div class ="mise-en-page-produit">
     <div class="produit_photo">
     <img src="${urlPhoto[i]}">
@@ -115,15 +116,20 @@ for(i=0 ; i < response.length ; i++){
     //inject HTML 
 });
 
+
+positionElement.innerHTML = structureProduits;
+console.log(structureProduits);
 }   
-    
-    positionElement.innerHTML = structureProduits;
-    console.log(structureProduits);
+
+// affichage peut s effectuer comme ceci ↓ la page est charger puis la fonction executer , 
+// ou bien juste affichageProduits(response) fonctionne ;
+window.onload = () =>  {
+    affichageProduits(response);
+
 }
 
-affichageProduits(response);
 
-console.log(option1 [1]);
+//console.log(option1 [1]);
 
 
 

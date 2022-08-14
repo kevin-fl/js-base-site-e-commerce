@@ -17,12 +17,15 @@
   align-items: center;
 }
 
+.mise-en-page-produit {
+  display: flex;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: 400px 400px;
-  grid-template-rows: 100px 200px 200px 200px 200px 200px 100px;
-  row-gap: 10px;
-  grid-template-areas: "header header" "produit_photo1 produit1" "produit_photo2 produit2" "produit_photo3 produit3" "produit_photo4 produit4" "produit_photo5 produit5" "footer footer";
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: "header header" "produit_photo produit" "footer footer";
 }
 @media only screen and (max-width: 400px) {
   .grid {
@@ -31,9 +34,11 @@
     grid-template-areas: "header" "produit1" "produit_photo1" "produit2" "produit_photo2" "produit3" "produit_photo3" "produit4" "produit_photo4" "produit5" "produit_photo5" "footer";
   }
 }
-.grid div {
-  border: solid 2px black;
+
+.container-produits .mise-en-page-produit {
+  border: solid 1px;
   background-color: bisque;
+  width: 600px;
 }
 
 header {
@@ -52,121 +57,6 @@ header .menu ul {
 header .menu ul li {
   margin-left: 3rem;
   margin-right: 3rem;
-}
-
-.produit1 {
-  grid-area: produit1;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.produit1 span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.produit_photo1 {
-  grid-area: produit_photo1;
-}
-
-.produit_photo1 > img {
-  object-fit: cover;
-  width: 100%;
-  margin: 0;
-  padding-top: -5px;
-  padding-left: 0;
-  max-height: 100%;
-}
-
-.produit2 {
-  grid-area: produit2;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.produit2 span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.produit_photo2 {
-  grid-area: produit_photo2;
-}
-
-.produit_photo2 > img {
-  object-fit: cover;
-  width: 100%;
-  margin: 0;
-  padding-top: -5px;
-  padding-left: 0;
-  max-height: 100%;
-}
-
-.produit3 {
-  grid-area: produit3;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.produit3 span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.produit_photo3 {
-  grid-area: produit_photo3;
-}
-
-.produit_photo3 > img {
-  object-fit: cover;
-  width: 100%;
-  margin: 0;
-  padding-top: -5px;
-  padding-left: 0;
-  max-height: 100%;
-}
-
-.produit4 {
-  grid-area: produit4;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.produit4 span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.produit_photo4 {
-  grid-area: produit_photo4;
-}
-
-.produit_photo4 > img {
-  object-fit: cover;
-  width: 100%;
-  margin: 0;
-  padding-top: -5px;
-  padding-left: 0;
-  max-height: 100%;
-}
-
-.produit5 {
-  grid-area: produit5;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.produit5 span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.produit_photo5 {
-  grid-area: produit_photo5;
-}
-
-.produit_photo5 > img {
-  object-fit: cover;
-  width: 100%;
-  margin: 0;
-  padding-top: -5px;
-  padding-left: 0;
-  max-height: 100%;
 }
 
 footer {
