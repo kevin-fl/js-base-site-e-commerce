@@ -20,8 +20,8 @@ console.log(queryString_url_id);  // j ai recup ? avec l id du produit
 const urlSearchParams = new URLSearchParams(queryString_url_id);
 console.log(urlSearchParams);
 
-const _id = urlSearchParams.get("id");
-console.log(_id);
+const id = urlSearchParams.get("id");
+console.log(id);
 
 
 
@@ -34,9 +34,11 @@ console.log(_id);
 
 //methode 2 depuis une variable .find()  --> via stackoverflow , quand t bloquer va jeter un coup d oeil 
 
-console.log(response);
 
 
-const idProduitSelectionner = response.find((element) => element._id === _id);
+    
+    const idProduitSelectionner = response.find((element) => element._id == id);    // attention si === alors donnera undefined car va s attendre a donner juste un id alors qu avec la metode .find() on veut tt l objet 
+                                                                                    // element._id car l id dans le tabl response est ecrit _id
+    console.log(response);
+    console.log(idProduitSelectionner);
 
-console.log(idProduitSelectionner);
