@@ -63,7 +63,7 @@ const structureProduits2 = `
 
                 <li>ProductName : <span>${idProduitSelectionner.productName}</span></li>
                 <li>description :<span>${idProduitSelectionner.description}</span> </li>
-                <li>option1: <span>${idProduitSelectionner.option1}</span></li>
+                <li>option: <span>${idProduitSelectionner.option}</span></li>
                 <li>use_for: <span>${idProduitSelectionner.use_for}</span></li>
                 <li>price: <span>${idProduitSelectionner.price}</span></li>
             </ul>
@@ -83,3 +83,51 @@ const structureProduits2 = `
 //injection html dans la page produit
 
 positionElement2.innerHTML = structureProduits2;
+
+
+
+
+//-------------------GESTION DU PANIER 
+// RECUP DES DONNEES SELECTIONNES PAR L UTILISATEUR ET ENVOIE AU PANIER 
+
+// selection de l id du formulaire 
+// viens de select name 
+const idForm = document.querySelector("#option_produit");
+console.log(idForm);
+
+//mettre choix de loption par l utilisateur dans une variable 
+
+const choixForm = idForm.value;
+console.log(choixForm);
+
+
+//selection du bouton ajouter l article au panier 
+const btn_envoyerAuPanier = document.querySelector("#btn-envoyer");
+console.log(btn_envoyerAuPanier);
+
+
+//mnt ecouter le bouton et envoiyer le panier 
+
+btn_envoyerAuPanier.addEventListener("click", (event)=> {
+event.preventDefault();   // preventDefault() ne reactualisera pas la page dans la logique 
+
+//mettre choix de loption par l utilisateur dans une variable 
+
+const choixForm = idForm.value;
+console.log(choixForm);
+
+//recuperation des valeurs du formulaires
+
+let optionProduitRecup = {
+    productName : idProduitSelectionner.productName,                         // du tableau response
+    id_produitSelectionner : idProduitSelectionner._id,                          // qui recup l id selectionner↑
+    option_produit: choixForm,                                                   // dans le label du form ln101
+    quantite: 1,                 
+    price: idProduitSelectionner.price /100                                // pour avoir prix en euros et pas en centimes d euros               
+}
+
+console.log(optionProduitRecup);
+});
+
+
+
