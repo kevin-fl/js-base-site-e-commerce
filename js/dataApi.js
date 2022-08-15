@@ -9,7 +9,7 @@ const response = [
         option1:" option 1 produit 1",
         urlPhoto : "./images/tunisian_pastery3.jpg",
         use_for : "",
-        price : 15000
+        price : 15000,
         
     },
     {

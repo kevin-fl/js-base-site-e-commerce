@@ -30,7 +30,9 @@
 
 .mise-en-page-produit{
     display: flex;
-    
+    border: 1px solid black;
+    background-color: bisque;
+    width: 80vw;
 }
 
 .grid{
@@ -84,4 +86,3 @@ footer{
 
 
 //--------------------mise en place de la grille done 
-

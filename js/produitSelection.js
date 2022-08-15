@@ -42,3 +42,44 @@ console.log(id);
     console.log(response);
     console.log(idProduitSelectionner);
 
+
+
+    // selection de la classe ou je vais injecter le code html 
+
+const positionElement2 = document.querySelector(".container-page-produits");
+console.log(positionElement2);
+
+
+//la structure html pr l affichage du produit selectionner depuis la page d accueil dans la page produit 
+//ln 58 on met donc le idproduitselectionner car ces la que ce se trouve les key et value de l objet .
+
+const structureProduits2 = `
+ <div class ="mise-en-page-produit">
+            <div class="produit">   
+               <img src="${idProduitSelectionner.urlPhoto}" />
+            </div>
+            <div class="produit">
+            <ul>
+
+                <li>ProductName : <span>${idProduitSelectionner.productName}</span></li>
+                <li>description :<span>${idProduitSelectionner.description}</span> </li>
+                <li>option1: <span>${idProduitSelectionner.option1}</span></li>
+                <li>use_for: <span>${idProduitSelectionner.use_for}</span></li>
+                <li>price: <span>${idProduitSelectionner.price}</span></li>
+            </ul>
+<form>
+    <label for="option_produit"></label>
+        <select name="option_produit" id="option_produit">
+         <option value="option1">option 1 </option>
+            <option value="option2">option 2 </option>
+        </select>    
+    </form>
+<button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter au panier</button>
+    </div>
+</div>
+`;
+
+
+//injection html dans la page produit
+
+positionElement2.innerHTML = structureProduits2;
