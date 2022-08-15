@@ -44,7 +44,7 @@ function affichageProduits(response) {
             // ↓ ou de cette maniere la fonctionne tres bien structureProduits += 
             // ln 47 permet le click sur l image ainsi qu avec l url la bonne image avec le bonne id 
             structureProduits = structureProduits + `
-        <a href ="./produit.html?${_id[i]}">      
+        <a href ="./produit.html?id=${_id[i]}">      
             <div class ="mise-en-page-produit">
                 <div class="produit_photo">
                    <img src="${urlPhoto[i]}">
