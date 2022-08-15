@@ -6,9 +6,13 @@ const response = [
         _id:01,
         productName : "nom produit 1",
         description : "description - lorem ",
-        option:" option 1 produit 1",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "",
+        use_for : "lorem",
         price : 15000,
         
     },
@@ -16,9 +20,13 @@ const response = [
         _id:02,
         productName : "nom produit 2",
         description : " description - lorem 2",
-        option:" option 2 produit 2",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "option 2",
+        use_for : "lorem",
         price : 20000,
         
     },
@@ -26,9 +34,13 @@ const response = [
         _id:03,
         productName : "nom produit 3",
         description : " description - lorem 3",
-        option:" option 3 produit 3",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "option 3",
+        use_for : "lorem",
         price : 25000,
         
     },
@@ -36,9 +48,13 @@ const response = [
         _id:04,
         productName : "nom produit 4",
         description : " desription - lorem 4",
-        option:" option 4 produit 4",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "option 4",
+        use_for : "lorem",
         price : 30000,
         
     },
@@ -46,9 +62,15 @@ const response = [
         _id:05,
         productName : "nom produit 5",
         description : " description - lorem 5",
-        option:" option 5 produit 5",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3",
+            "option 4",
+            "option 5"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "option 5",
+        use_for : "lorem",
         price : 35000,
         
     },
@@ -56,9 +78,16 @@ const response = [
         _id:06,
         productName : "nom produit 6",
         description : " description - lorem 6",
-        option:" option 6 produit 6",
+        options:[
+            "option 1",
+            "option 2",
+            "option 3",
+            "option 4",
+            "option 5",
+            "option 6"
+        ],
         urlPhoto : "./images/tunisian_pastery3.jpg",
-        use_for : "option 6",
+        use_for : "lorem",
         price : 45000,
 
     },

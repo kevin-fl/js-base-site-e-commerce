@@ -5,7 +5,7 @@
 // query= requete , string = chaine de caractere
 
 const queryString_url_id = window.location.search;
-console.log(queryString_url_id);  // j ai recup ? avec l id du produit 
+//console.log(queryString_url_id);  // j ai recup ? avec l id du produit 
 
 
 // pr retirer le ? de la reponse dans la console on va faire :
@@ -18,10 +18,10 @@ console.log(queryString_url_id);  // j ai recup ? avec l id du produit
 //methode 2 , on utilise un constructeur ! + puissant et un peu plus tricky pour extraire l id 
 
 const urlSearchParams = new URLSearchParams(queryString_url_id);
-console.log(urlSearchParams);
+//console.log(urlSearchParams);
 
 const id = urlSearchParams.get("id");
-console.log(id);
+//console.log(id);
 
 
 
@@ -37,17 +37,17 @@ console.log(id);
 
 
     
-    const idProduitSelectionner = response.find((element) => element._id == id);    // attention si === alors donnera undefined car va s attendre a donner juste un id alors qu avec la metode .find() on veut tt l objet 
+const idProduitSelectionner = response.find((element) => element._id == id);    // attention si === alors donnera undefined car va s attendre a donner juste un id alors qu avec la metode .find() on veut tt l objet 
                                                                                     // element._id car l id dans le tabl response est ecrit _id
-    console.log(response);
-    console.log(idProduitSelectionner);
+   // console.log(response);
+   // console.log(idProduitSelectionner);
 
 
 
     // selection de la classe ou je vais injecter le code html 
 
 const positionElement2 = document.querySelector(".container-page-produits");
-console.log(positionElement2);
+//console.log(positionElement2);
 
 
 //la structure html pr l affichage du produit selectionner depuis la page d accueil dans la page produit 
@@ -63,28 +63,52 @@ const structureProduits2 = `
 
                 <li>ProductName : <span>${idProduitSelectionner.productName}</span></li>
                 <li>description :<span>${idProduitSelectionner.description}</span> </li>
-                <li>option: <span>${idProduitSelectionner.option}</span></li>
                 <li>use_for: <span>${idProduitSelectionner.use_for}</span></li>
-                <li>price: <span>${idProduitSelectionner.price}</span></li>
+                <li>price:// <span>${idProduitSelectionner.price}</span></li>
             </ul>
 <form>
-    <label for="option_produit"></label>
-        <select name="option_produit" id="option_produit">
-         <option value="option1">option 1 </option>
-            <option value="option2">option 2 </option>
+    <label for="option_produit">choisis l option </label>
+        <select name="option_produit" id="option_produit">    
+       
         </select>    
-    </form>
-<button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter au panier</button>
+        
+        <button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter au panier</button>
+        </form>
     </div>
 </div>
 `;
 
+//formulaire pr adapter au nbre d options qu il y a dans l objet du produit
 
-//injection html dans la page produit
+const optionQuantite = idProduitSelectionner.options;
+console.log(optionQuantite);
+let structureOptions = [];
+
+
+// boucle for pour afficher toutes les options du produit 
+//j+1 permet de commencer l index a 1 pour l option 1
+for (let j = 0; j< optionQuantite.length ; j++ ){
+    structureOptions = structureOptions + 
+    `
+    <option value ="${j+1}">${optionQuantite[j]}</option>
+    `;
+}
+
+
+console.log(structureOptions);
+
+//injection html dans la page produit  
 
 positionElement2.innerHTML = structureProduits2;
 
+//injection html dans la page produit  pr le choix des OPTIONS dans le FORMULAIRE
 
+const positionElement3 = document.querySelector("#option_produit");
+console.log(positionElement3);
+
+// injection html dans la page produit , au niveau des options 
+
+positionElement3.innerHTML = structureOptions;
 
 
 //-------------------GESTION DU PANIER 
@@ -114,7 +138,7 @@ event.preventDefault();   // preventDefault() ne reactualisera pas la page dans 
 //mettre choix de loption par l utilisateur dans une variable 
 
 const choixForm = idForm.value;
-console.log(choixForm);
+//console.log(choixForm);
 
 //recuperation des valeurs du formulaires
 
@@ -126,7 +150,7 @@ let optionProduitRecup = {
     price: idProduitSelectionner.price /100                                // pour avoir prix en euros et pas en centimes d euros               
 }
 
-console.log(optionProduitRecup);
+console.log(optionProduitRecup);  // permet l ajout au panier 
 });
 
 

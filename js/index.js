@@ -2,7 +2,6 @@
 
 let productName = [];
 let description = [];
-let option1 = [];
 let use_for = [];
 let price = [];
 let urlPhoto = [];
@@ -31,7 +30,6 @@ function affichageProduits(response) {
             _id[i] = element._id;
             productName[i] = element.productName;
             description[i] = element.description;
-            option1[i] = element.option1;
             use_for[i] = element.use_for;
             price[i] = element.price;
             urlPhoto[i] = element.urlPhoto;
@@ -50,13 +48,11 @@ function affichageProduits(response) {
                    <img src="${urlPhoto[i]}">
             </div>
             <div class="produit">
-            <ul>
-                
+            <ul>               
                 <li>ProductName : ${productName[i]}</span></li>
                 <li>description :<span>${description[i]}</span> </li>
-                <li>option1: <span>${option1[i]}</span></li>
                 <li>use_for: <span>${urlPhoto[i]}</span></li>
-                <li>price: <span>${price[i]}</span></li>
+                <li>price: <span>${price[i]/100} $</span></li>
             </ul>
             <button>Commander L'article</button>
             </div>
