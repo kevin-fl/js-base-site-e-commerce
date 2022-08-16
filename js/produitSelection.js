@@ -155,3 +155,23 @@ console.log(optionProduitRecup);  // permet l ajout au panier
 
 
 
+
+// le local storage ----------------------------- pour mettre les articles dans le panier reellement 
+// stocker la recuperation des valeurs du formulaire dans le local storage -------------------
+// ca se recupere sous la forme chaine de caractere , il faut que ce soit un objet json 
+// le local sotage permet si tu ferme ton pc , de pas perdre tes donnees , et donc ton panier --> comme amazon
+
+// storage est une methode --> qq exemple de storage --> 
+//storage.key() lorsqu on lui passe un nombre n , renvoie le nom de n-ieme clé dans le stockage
+//storage.getItem() lorsqu 'on lui passe le nom d une clé , renvoie la valeur de la clé correspondante 
+//storage.setItem() lorsqu on lui passe un nom de clé et une valeur , cette methode ajoute cette clé et cette valeur ds le stockage . si la clé existe deja , elle met a jour la valeur 
+//storage.removeItem() lorsqu on lui passe le nom d une clé il supprime cette clé du stockage
+//storage.clear() lorsqu elle est appelée , cette methode supprime ttes les clés du stockage .
+//localstorage permet d acceder a un objet local stoage . local storage pas de delai d expiration ---> session storage nettoyés quand on ferme le navigateur .
+//window.localStorage --> convertir en json --> json parse ou stringify pr le convertir en objet js 
+
+
+
+
+
+
