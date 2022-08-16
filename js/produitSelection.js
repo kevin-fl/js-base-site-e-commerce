@@ -169,7 +169,13 @@ console.log(optionProduitRecup);  // permet l ajout au panier
 //storage.clear() lorsqu elle est appelée , cette methode supprime ttes les clés du stockage .
 //localstorage permet d acceder a un objet local stoage . local storage pas de delai d expiration ---> session storage nettoyés quand on ferme le navigateur .
 //window.localStorage --> convertir en json --> json parse ou stringify pr le convertir en objet js 
+// pour envoyer des donnees js ds le local storage faut les convertir en format json 
 
+
+let produitEnregistrerDansLocalStorage = JSON.parse(localStorage.getItem("produit"));     // ceci nous permet d aller dans le local storage 
+
+//n convertir ln175 ce string en format json / json.parse
+//json.parse converti les données Json en objet js 
 
 
 
