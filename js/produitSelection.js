@@ -104,7 +104,7 @@ positionElement2.innerHTML = structureProduits2;
 //injection html dans la page produit  pr le choix des OPTIONS dans le FORMULAIRE
 
 const positionElement3 = document.querySelector("#option_produit");
-console.log(positionElement3);
+//console.log(positionElement3);
 
 // injection html dans la page produit , au niveau des options 
 
@@ -117,20 +117,20 @@ positionElement3.innerHTML = structureOptions;
 // selection de l id du formulaire 
 // viens de select name 
 const idForm = document.querySelector("#option_produit");
-console.log(idForm);
+//console.log(idForm);
 
 //mettre choix de loption par l utilisateur dans une variable 
 
 const choixForm = idForm.value;
-console.log(choixForm);
+//console.log(choixForm);
 
 
 //selection du bouton ajouter l article au panier 
 const btn_envoyerAuPanier = document.querySelector("#btn-envoyer");
-console.log(btn_envoyerAuPanier);
+//console.log(btn_envoyerAuPanier);
 
 
-//mnt ecouter le bouton et envoiyer le panier 
+//------------------- addEventListener mnt ecouter le bouton et envoyer le panier ---------------------------
 
 btn_envoyerAuPanier.addEventListener("click", (event)=> {
 event.preventDefault();   // preventDefault() ne reactualisera pas la page dans la logique 
@@ -148,15 +148,14 @@ let optionProduitRecup = {
     option_produit: choixForm,                                                   // dans le label du form ln101
     quantite: 1,                 
     price: idProduitSelectionner.price /100                                // pour avoir prix en euros et pas en centimes d euros               
-}
+};
 
 console.log(optionProduitRecup);  // permet l ajout au panier 
-});
 
 
 
-
-// le local storage ----------------------------- pour mettre les articles dans le panier reellement 
+// -------------------------------------------- le local storage ----------------------------- 
+//pour mettre les articles dans le panier reellement 
 // stocker la recuperation des valeurs du formulaire dans le local storage -------------------
 // ca se recupere sous la forme chaine de caractere , il faut que ce soit un objet json 
 // le local sotage permet si tu ferme ton pc , de pas perdre tes donnees , et donc ton panier --> comme amazon
@@ -171,11 +170,40 @@ console.log(optionProduitRecup);  // permet l ajout au panier
 //window.localStorage --> convertir en json --> json parse ou stringify pr le convertir en objet js 
 // pour envoyer des donnees js ds le local storage faut les convertir en format json 
 
-
-let produitEnregistrerDansLocalStorage = JSON.parse(localStorage.getItem("produit"));     // ceci nous permet d aller dans le local storage 
+let produitEnregistrerDansLocalStorage = JSON.parse(localStorage.getItem("produit"));     // .getItem --> ceci nous permet d aller lire dans le local storage 
+//console.log(produitEnregistrerDansLocalStorage);
 
 //n convertir ln175 ce string en format json / json.parse
-//json.parse converti les données Json en objet js 
+//json.parse converti les données Json qui sont dans le local storage  en objet js 
+
+
+// si y a deja des donnees dans le localstorage
+//NB : ne mettra qu une clé produit d un article car la condition c est que si c okay y a une cle produit , alors le boolean devient true , le localstorage contient qqch , il rajoute pas de 2eme produit
+
+if(produitEnregistrerDansLocalStorage){
+//console.log("ok");
+// on rajoute ceci pr pouvoir avoir plusieurs produits ds le localstorage 
+produitEnregistrerDansLocalStorage.push(optionProduitRecup);
+localStorage.setItem("produit", JSON.stringify(produitEnregistrerDansLocalStorage))    // okay ca marche mais il faut sortir du localstorage et se remettre sur la page pour voir le produit apparaitre , ne se fait pas en temps reel comme avec la console 
+//console.log();
+// s il n y a pas de produit enregistré dans le local storage 
+} else {
+    produitEnregistrerDansLocalStorage = [];   // tab vide crée , on va rajouter dedans les options du produit recup
+    produitEnregistrerDansLocalStorage.push(optionProduitRecup);
+    // mnt on va envoyer ca ds le local storage et crée la clé qu ont a appeler "produit" ln 173
+    
+    localStorage.setItem("produit", JSON.stringify(produitEnregistrerDansLocalStorage));   // -> key : produit value json.stringify .   va transformer ce tableau objet js en format json 
+    console.log(produitEnregistrerDansLocalStorage);
+ 
+
+}
+});    // la fonction commence au addEventListener ln 135 et termine ici 
+
+
+
+
+
+
 
 
 
