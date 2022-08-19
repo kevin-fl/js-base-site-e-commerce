@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,39 +8,40 @@
     <link rel="stylesheet" href="./sass/css/style.css" />
     <title>PAGE DU PANIER</title>
 </head>
+
 <body>
     <div class="container">
-    <div class="grid">
-    <header>
-    <h1>MIAM</h1>
-    <div class="menu">
-        <ul>
-            <li><a href = "./index.html">ACCUEIL</a></li>
-
-            <li><a href = "./panier.html">PANIER ◄</a></li>
-        </ul>
-    </div>
-</header>
-<!--produits-->
-<div id="container-produits-panier "></div>
-
-
-                <footer>COPYRIGHT RESERVED </footer>
-    </div>
-    </div>
-
-    <script type="text/javascript" defer src="./js/dataApi.js"></script>
-    <script type="text/javascript" defer src="./js/panier.js"></script>
-</body>
-</html>
-                
-
-
-
-    
+        <header>
+            <h1>MIAM</h1>
+            <div class="menu">
+                <ul>
+                    <li><a href="./index.html">ACCUEIL</a></li>
+                    <li><a href="./panier.html">PANIER ◄</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--produits-->
         
+        <div class="grid-panier">
+            <div id="container-produits-panier ">
+                <h2>VOS PRODUITS SELECTIONNES</h2>
+                
+                <div class="container-recap-produit-panier">
+                    <div>Quantite 1 - nom produit 1</div>
+                    <div>200$ - supprimer article</div>
+                </div>
 
+                <div class="container-montant-total">
+                    <div>Montant Total = 200$</div>
+                    <div>Vider le panier </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer-panier">COPYRIGHT RESERVED </footer>
+        </div>
 
+        <script type="text/javascript" defer src="./js/dataApi.js"></script>
+        <script type="text/javascript" defer src="./js/panier.js"></script>
+</body>
 
-    
-    
+</html>

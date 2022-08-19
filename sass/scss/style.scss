@@ -2,6 +2,13 @@
 @import "./mixins";
 @import "./variables";
 
+
+//permet d ajuster la taille de l ecran , assez sympa a faire 
+
+//:root {
+ //   font-size: 90%;
+//}
+
 //NB: & est utiliser en sass quand on veut attacher 2 elements ensemble , pseudo classe avc l element plus precisement ex : a avec hover 
 
 
@@ -41,7 +48,7 @@
     grid-template-rows: auto;
     grid-template-areas:
     "header header"
-    "produit_photo produit"
+    "produit_photo produit "
     "footer footer";
 
     @include smartphone-grid;
@@ -82,7 +89,46 @@ header{
 footer{
     grid-area: footer;
     text-align: center;
+    margin: 40px;
 }
 
 
 //--------------------mise en place de la grille done 
+
+//-----------------------------------------------------------------
+
+//PRODUIT.HTML-----------------------------------------------------
+
+//PRODUIT HTML FIN-------------------------------------------------
+
+// panier.html-----------------------------------------------------
+
+.grid-panier{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-row-gap: 1rem;
+    grid-template-areas: 
+    "header"
+    "container-produits-panier"
+    "footer"
+    ;
+    border: 2px solid black;
+    width: 350px;
+}
+
+
+.container-recap-produit-panier{
+
+    background-color: lightblue;
+    display: flex;  // pour mettre quantite / nom produit / prix et supprimer l article cote a cote 
+
+}
+
+.container-montant-total{
+    background-color: bisque;
+}
+
+
+
+
