@@ -81,10 +81,24 @@ footer {
 .container-recap-produit-panier {
   background-color: lightblue;
   display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 3rem;
+  height: 50px;
+  padding-top: 10px;
 }
 
 .container-montant-total {
   background-color: bisque;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 3rem;
+  height: 50px;
+  padding-top: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

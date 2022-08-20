@@ -122,13 +122,29 @@ footer{
 
     background-color: lightblue;
     display: flex;  // pour mettre quantite / nom produit / prix et supprimer l article cote a cote 
-
+    justify-content: space-around;
+    flex-grow: 1; // capacite a la cellule de s agrandir 
+    flex-shrink: 1; // opposite
+    flex-basis: 3rem;
+    height: 50px;
+    padding-top: 10px;
 }
 
 .container-montant-total{
     background-color: bisque;
+    display: flex; //idem 
+    justify-content: space-around;
+    align-items: center;
+    
+    flex-grow: 1; // capacite a la cellule de s agrandir 
+    flex-shrink: 1; // opposite
+    flex-basis: 3rem;
+    height: 50px;
+    padding-top: 10px;
 }
 
+
+// panier html Fin ----------------------------------------
 
 
 
