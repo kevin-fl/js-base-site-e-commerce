@@ -92,21 +92,40 @@ window.location.href = "panier.html";
     })
 }
 
-       // event.preventDefault();   // evite de recharger la page si je click plusieurs fois sur supprimer
-        // montre l ecoute sur le click supprimer ds la console
-      // console.log(event);
-       
-        //selection de l id du produit qui va etre supprimer au click button
-       //console.log("coucou");
-       // console.log(id_selectionner_delete);
-        // autre solution , methode filter  
+    
+// tjrs creer le code html du button avant la methode insertAdjacentHTML sinon ca ne fonctionne pas !
+
+const btn_supprime_tout_html = `
+<button class= "btn-supprime-tout"> Vider le panier </button> 
+`;
+//insertion du button ds le html du panier , car pr que le queryselector existe , faut que le button existe !
+//aller recup la class container-panier-vide dans le panier.js
+
+positionElement4.insertAdjacentHTML("beforeend",btn_supprime_tout_html);
+
+
+//↑cette methode prend en parametre beforebegin ou afterbengin opu beforened etc ... mdn :)
+
+//la selection de la reference du bouton "btn-tous-supprimer-panier"
+
+const btn_supprime_tout_js = document.querySelector(".btn-supprime-tout");
+console.log(btn_supprime_tout_js);
+
+//suppression de la key "produit" du localstorage pr vider entierement le panier 
+
+btn_supprime_tout_js.addEventListener('click' , (e)=> {
+    e.preventDefault;
+    //.removeItem pr vider le local storage 
+    localStorage.removeItem("produit");
+
+    //alert panier a ete vidé 
+    
+    alert("le panier a été vidé")
+    
+    //rechargement de la page panier 
+    window.location.href = "panier.html";
+});
 
 
 
-
-
-
-
-
-
-
+// FIN -------------------------------LE BOUTON POUR VIDER TT LE PANIER 
