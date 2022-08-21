@@ -90,9 +90,11 @@ let structureOptions = [];
 for (let j = 0; j < optionQuantite.length; j++) {
     structureOptions = structureOptions +
         `
-    <option value ="${j + 1}">${optionQuantite[j]}</option>
+    <option value ="${optionQuantite[j]}">${optionQuantite[j]}</option>
     `;
 }
+
+//ln93 pour avoir les options qui s affiche dynamiquement le mot option + integer
 
 
 console.log(structureOptions);
@@ -181,7 +183,7 @@ btn_envoyerAuPanier.addEventListener("click", (event) => {
     //NB : ne mettra qu une clé produit d un article car la condition c est que si c okay y a une cle produit , alors le boolean devient true , le localstorage contient qqch , il rajoute pas de 2eme produit
     //fonction fenetre popup 
     const popupConfirmation = () => {
-        if (window.confirm(`${idProduitSelectionner.productName} option: ${choixForm} a bien ete ajouté au panier pr check le panier ok ou revenir a l accueil ANNULER `)) {
+        if (window.confirm(`${idProduitSelectionner.productName} ${choixForm} a bien ete ajouté au panier pr check le panier ok ou revenir a l accueil ANNULER `)) {
             window.location.href = "panier.html"        // si la personne veut voir son panier , utiliser la dresse url du panier via cette methode window.location.href
         } else {       //.confirm affiche un dialogue avec un message et 2 boutons , ok et annuler .
             window.location.href = "index.html";
