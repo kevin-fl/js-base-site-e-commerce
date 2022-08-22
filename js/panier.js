@@ -120,7 +120,7 @@ btn_supprime_tout_js.addEventListener('click' , (e)=> {
 
     //alert panier a ete vidé 
     
-    alert("le panier a été vidé")
+    alert("le panier a été vidé");
     
     //rechargement de la page panier 
     window.location.href = "panier.html";
@@ -128,4 +128,15 @@ btn_supprime_tout_js.addEventListener('click' , (e)=> {
 
 
 
-// FIN -------------------------------LE BOUTON POUR VIDER TT LE PANIER 
+// ↑FIN -------------------------------LE BOUTON POUR VIDER TT LE PANIER 
+
+//MONTANT TOTAL DU PANIER -----------------------------
+// partie price --> declarer variable pr pouvoir y mettre les prix qui sont presents dans le panier
+
+let priceTotalCalculated = [];
+
+// aller chercher les prix ds le panier 
+
+for ( let p = 0 ; p <  produitEnregistrerDansLocalStorage.length ; p++){
+    console.log(produitEnregistrerDansLocalStorage); 
+}
