@@ -230,45 +230,60 @@ const btnEnvoyerForm = document.querySelector("#envoyerform");
 
  btnEnvoyerForm.addEventListener("click" , (e)=>{
     e.preventDefault();
-    //recuperation des valeurs du formulaire  pour les mettres ds le local storage
-    // NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
 
-     localStorage.setItem("prenom", document.querySelector("#prenom").value);
-     localStorage.setItem("nom", document.querySelector("#nom").value);
-     localStorage.setItem("adresse", document.querySelector("#adresse").value);
-     localStorage.setItem("ville", document.querySelector("#ville").value);
-     localStorage.setItem("telephone", document.querySelector("#telephone").value);
-     localStorage.setItem("email", document.querySelector("#email").value);
-   
-     //console.log(document.querySelector("#prenom").value);
-     
-//↑ nickel a tt recuperer ds le local storage.
-
-//Mettre les values du formulaire ds un objet , tjrs dans le addeveventlistener sinon ne fonctionne pas
-
-const formulaire = {
-    prenom: localStorage.getItem("prenom"),
-    nom:localStorage.getItem("nom"),
-    adresse:localStorage.getItem("adresse"),
-    ville:localStorage.getItem("ville"),
-    telephone:localStorage.getItem("telehone"),
-    email:localStorage.getItem("email")
+//recuperation des valeurs du formulaire
+/*const formulaireValues = {
+    prenom : document.querySelector("#prenom").value,
+    nom :    document.querySelector("#nom").value,  
+    adresse :   document.querySelector("#adresse").value,
+    ville : document.querySelector("#ville").value,
+    telephone : document.querySelector("#telephone").value,
+    email : document.querySelector("#email").value,
 }
-console.log("formulaire");
-console.log(formulaire);
+*/
+//console.log(formulaireValues);
 
+// const ln 235 autre moyen en creant une classe a la place de la const formulaireValues
+
+class Formulaire {
+    constructor(input){    // on laisse proprietes du constructor vide car document.queryselector . / si input ici alors input dans la ln 259 
+        // dans l exemple avec cet input , montre qu ont peut decide de prendre seulement une proprietes de l objet , exemple prendre que prenom 
+        // mais pour ca faut tt mettre en greenscreen , a voir pq je n ai pas encore compris 
+        this.prenom = document.querySelector("#prenom").value;
+        this.nom = document.querySelector("#nom").value;
+        this.adresse = document.querySelector("#adresse").value;
+        this.ville = document.querySelector("#ville").value;
+        this.telephone = document.querySelector("#telephone").value;
+        this.email = document.querySelector("#email").value;
+        //truc sympa ↓ avec litteraux de gabarits
+       // this.input = document.querySelector(`#${input}`).value;
+    }
+}
+
+//appel de l instance de la Class Formulaire pr créer l objet formulaireValues2
+const formulaireValues2 = new Formulaire("prenom");     //("prenom") par exemple pr juste recup le prenom 
+
+console.log("formulaireValues2");
+console.log(formulaireValues2);
+// mettre l objet formulaireValues dans le local storage 
+//recuperation des valeurs du formulaire  pour les mettres ds le local storage
+// NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
+
+localStorage.setItem("formulaireValues2", JSON.stringify(formulaireValues2));  // va cree un objet formulaireValues mais pas ce qu on attend , car il a besoin d un string dans la methode . check l appli du localstorage ce sera ecrit object object .
+// c et pr ca on a rajouter JSON.stringify et la ca fonctionne on a acces a tous les sections du formulaireValues
+//↑ nickel a tt recuperer ds le local storage.
 // mettre les valeurs du form et mettre les produits selectionnes dans l obet a envoyer vers le serveur 
 //2 objets que je met dans un objet 
 
 const aEnvoyer = {
    produitEnregistrerDansLocalStorage,
-   formulaire
-
+   //formulaireValues     // ln 235 soit cette methode soit avec class
+    //Formulaire
 }
 console.log("aEnvoyer");
 console.log(aEnvoyer);
 
-//envoie de l objet " envoyer" vers le serveur 
+//envoie de l objet " aEnvoyer" vers le serveur 
 
 })    
 
