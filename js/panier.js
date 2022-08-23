@@ -114,7 +114,7 @@ console.log(btn_supprime_tout_js);
 //suppression de la key "produit" du localstorage pr vider entierement le panier 
 
 btn_supprime_tout_js.addEventListener('click' , (e)=> {
-    e.preventDefault;
+    e.preventDefault();
     //.removeItem pr vider le local storage 
     localStorage.removeItem("produit");
 
@@ -135,8 +135,145 @@ btn_supprime_tout_js.addEventListener('click' , (e)=> {
 
 let priceTotalCalculated = [];
 
-// aller chercher les prix ds le panier 
+// aller chercher les prix ds le panier sous fiorme de array 
 
 for ( let p = 0 ; p <  produitEnregistrerDansLocalStorage.length ; p++){
-    console.log(produitEnregistrerDansLocalStorage); 
+    let priceProduitPanier =  produitEnregistrerDansLocalStorage[p].price;
+   // console.log(priceProduitPanier); 
+   
+   //mettre les price du panier dans la var priceTotalCalculated
+   priceTotalCalculated.push(priceProduitPanier);
+   console.log(priceTotalCalculated);
+   
 }
+
+
+//additionner les prix dans le tableau priceTotalCalculated avec methode .reduce --> accumule les valeurs pour les reduire a une seule valeur 
+
+
+const reducer = (accumulator , currentValue) => accumulator + currentValue;
+//console.log(priceTotalCalculated.reduce(reducer));
+
+const priceTotal = priceTotalCalculated.reduce(reducer,0); // rajoute le 0 car si panier vide ce la va créer une erreur ;) 
+//console.log(priceTotal);
+
+
+ // &fficher le total dans le html 
+
+ const affichagePriceHtml = `<div class="affichage-prix-html">le prix est de : ${priceTotal} $ </div>`
+
+ //injection Html apres le dernier enfant (a la suite de tout ceci )
+ 
+ positionElement4.insertAdjacentHTML("beforeend", affichagePriceHtml) ;
+
+
+
+//--------------------FIN montant du panier ↑
+
+
+//FORMULAIRE -------------------------------------------------------------------
+
+ 
+ //Le formulaire dans le html mais dans le js pour pouvoir interagir avec 
+
+ const afficherFormulaireHtml = () => {
+
+    //selection element du DOM pour le formulaire 
+
+    const positionElement5 = document.querySelector("#container-produits-panier");
+   
+    const structureFormulaire = `
+    <!--Le formulaire dans le html -->
+            
+    <div id = "formulaire-commande">
+        <h2 id="h2form">FORMULAIRE A REMPLIR POUR VOTRE COMMANDE </h2>
+        
+        <form action="#" id="form">
+            <label for="prenom"> Prenom</label>
+        <input type="text" id="prenom" name="prenom" 
+        minlength="4" maxlength="14" size="16" placeholder="prenom">
+        
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" placeholder="nom">
+        
+        <label for="adresse">Adresse</label>
+        <textarea type="text" id="adresse" name="adresse"></textarea>
+        
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" name="ville">
+        
+        <label for="telephone">telephone</label>
+        <input type="text" id="telephone" name="telephone" placeholder="champ obligatoire">
+        
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" placeholder="champ obligatoire">
+        <button id="envoyerform" type="submit" name="envoyerform">Valider la commande</button>
+    </form>
+    `;
+
+    //injection HTML
+
+    positionElement5.insertAdjacentHTML("afterend", structureFormulaire);
+
+ };
+
+ // mnt ca va affichage le formulaire 
+
+ afficherFormulaireHtml();
+
+//selection du bouton pour envoyer le formulaire 
+const btnEnvoyerForm = document.querySelector("#envoyerform");
+//console.log(btnEnvoyerForm);
+
+
+ //addeventlistener pr ecouter du button formulaire
+
+ btnEnvoyerForm.addEventListener("click" , (e)=>{
+    e.preventDefault();
+    //recuperation des valeurs du formulaire  pour les mettres ds le local storage
+    // NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
+
+     localStorage.setItem("prenom", document.querySelector("#prenom").value);
+     localStorage.setItem("nom", document.querySelector("#nom").value);
+     localStorage.setItem("adresse", document.querySelector("#adresse").value);
+     localStorage.setItem("ville", document.querySelector("#ville").value);
+     localStorage.setItem("telephone", document.querySelector("#telephone").value);
+     localStorage.setItem("email", document.querySelector("#email").value);
+   
+     //console.log(document.querySelector("#prenom").value);
+     
+//↑ nickel a tt recuperer ds le local storage.
+
+//Mettre les values du formulaire ds un objet , tjrs dans le addeveventlistener sinon ne fonctionne pas
+
+const formulaire = {
+    prenom: localStorage.getItem("prenom"),
+    nom:localStorage.getItem("nom"),
+    adresse:localStorage.getItem("adresse"),
+    ville:localStorage.getItem("ville"),
+    telephone:localStorage.getItem("telehone"),
+    email:localStorage.getItem("email")
+}
+console.log("formulaire");
+console.log(formulaire);
+
+// mettre les valeurs du form et mettre les produits selectionnes dans l obet a envoyer vers le serveur 
+//2 objets que je met dans un objet 
+
+const aEnvoyer = {
+   produitEnregistrerDansLocalStorage,
+   formulaire
+
+}
+console.log("aEnvoyer");
+console.log(aEnvoyer);
+
+//envoie de l objet " envoyer" vers le serveur 
+
+})    
+
+
+
+
+
+

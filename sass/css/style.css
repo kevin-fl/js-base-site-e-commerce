@@ -106,4 +106,34 @@ footer {
   text-align: center;
 }
 
+#h2form {
+  text-align: center;
+  text-decoration: underline;
+  background-color: bisque;
+}
+
+#formulaire-commande {
+  display: flex;
+  border: 2px solid black;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  width: auto;
+}
+
+#form {
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+#form input {
+  background-color: white;
+  width: 40vh;
+}
+#form textarea {
+  width: 40vh;
+}
+
 /*# sourceMappingURL=style.css.map */
