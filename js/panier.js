@@ -263,8 +263,9 @@ class Formulaire {
 //appel de l instance de la Class Formulaire pr créer l objet formulaireValues2
 const formulaireValues2 = new Formulaire("prenom");     //("prenom") par exemple pr juste recup le prenom 
 
-console.log("formulaireValues2");
-console.log(formulaireValues2);
+//console.log("formulaireValues2");
+//console.log(formulaireValues2);
+
 // mettre l objet formulaireValues dans le local storage 
 //recuperation des valeurs du formulaire  pour les mettres ds le local storage
 // NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
@@ -285,8 +286,37 @@ console.log(aEnvoyer);
 
 //envoie de l objet " aEnvoyer" vers le serveur 
 
-})    
+});    
 
+
+//----------------------Mettre le contenu du local storage ds le champs du formulaire ------------ en gros que les données entrée ds le form reste la meme si je reactualise la page ou je vais chercher un autre produit 
+//----------------------prendre la key ds le localstorage et la mettre ds une variable------------
+
+const dataLocalStorage = localStorage.getItem("formulaireValues2");
+
+//convertir la string pr avoir un  object js ln 299
+// meth ode structured clone a tester un de ces 4 ;)
+const dataLocalStorageObject = JSON.parse(dataLocalStorage);
+
+//mettre les values du localstorage du formulaire dans les champs pr qu il reste // NB pas la methode la plus belle , car pas mal de code sur ln 303
+/*
+document.querySelector("#prenom").setAttribute("value", dataLocalStorageObject.prenom);
+document.querySelector("#nom").setAttribute("value", dataLocalStorageObject.nom);
+
+// 2eme methode plus sympa et un peu moins longue 
+document.querySelector("#telephone").value = dataLocalStorageObject.telephone;
+document.querySelector("#ville").value = dataLocalStorageObject.ville;
+document.querySelector("#adresse").value = dataLocalStorageObject.adresse;
+document.querySelector("#email").value = dataLocalStorageObject.email;
+*/
+console.log("dataLocalStorage");
+console.log(dataLocalStorageObject);
+
+//3eme methode la meilleur et la + pro ! avec une fonction pr que le champ du formulaire soit rempli par les donnees du localstorage si elle existe
+
+function remplirInputDepuisLocalStorage(){
+    document.querySelector().value = dataLocalStorageObject
+}
 
 
 
