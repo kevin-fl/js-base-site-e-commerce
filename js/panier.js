@@ -4,7 +4,7 @@ console.log(produitEnregistrerDansLocalStorage);
 //ln recup ce qui a dans le local storage et je peux le voir dans la console
 
 
-//-----------------------Affichage des produits du panier--------------------- 
+//-----------------------******************************Affichage des produits du panier***************************------------------------------------------------------- 
 
 //selection de la classe ou je vais injecter le code HTML
 
@@ -54,10 +54,10 @@ if (produitEnregistrerDansLocalStorage === null || produitEnregistrerDansLocalSt
 
 }
 
-//------ display basket done --------------------
+//-------------------------------------------------------------------- display basket done -------------------------------------------------------------------------------
 
 
-// gestion button delete article-------------------------------
+// -------------------------------------***************************gestion button delete article*****************************-------------------------------------------------
 
 //selection des references de touts les btn-supprimer 
 
@@ -128,9 +128,9 @@ btn_supprime_tout_js.addEventListener('click' , (e)=> {
 
 
 
-// ↑FIN -------------------------------LE BOUTON POUR VIDER TT LE PANIER 
+// ↑FIN -------------------------------------------------LE BOUTON POUR VIDER TT LE PANIER----------------------------------------------------------------------------↑FIN 
 
-//MONTANT TOTAL DU PANIER -----------------------------
+//--------------------------------------------******************MONTANT TOTAL DU PANIER **********************------------------------------------------------------------
 // partie price --> declarer variable pr pouvoir y mettre les prix qui sont presents dans le panier
 
 let priceTotalCalculated = [];
@@ -168,10 +168,10 @@ const priceTotal = priceTotalCalculated.reduce(reducer,0); // rajoute le 0 car s
 
 
 
-//--------------------FIN montant du panier ↑
+//--------------------------------------------------------------FIN montant du panier ↑----------------------------------------------------------------------------------
 
 
-//FORMULAIRE -------------------------------------------------------------------
+//-------------------------------------******************************FORMULAIRE ***********************************-------------------------------------------------------------------
 
  
  //Le formulaire dans le html mais dans le js pour pouvoir interagir avec 
@@ -270,11 +270,51 @@ const formulaireValues2 = new Formulaire("prenom");     //("prenom") par exemple
 //recuperation des valeurs du formulaire  pour les mettres ds le local storage
 // NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
 
+
+//-----------------****************************************GESTION VALIDATION DU FORMULAIRE********************************------------------------------------------------
+// ---------utilisation des regex--------------------- NB y a des createur de regex sur le net , plus simple
+
+function prenomControle(){
+
+    // controle la validite du prenom 
+    const lePrenom = formulaireValues2.prenom;
+    if(/^[A-Za-z]{2,20}$/.test(lePrenom)){    // {2,20} entre min 2 et max 20 lettres , on appel ca les quantificateurs
+        console.log("ok");
+        return true; 
+    } else {
+        console.log("ko");
+        return false;
+    };
+    console.log("lePrenom");
+    console.log(lePrenom);
+};
+
+
+
+
+
+
+
+//↑---------------****************************FIN - GESTION VALIDATION DU FORMULAIRE**************************************-------------------------------------------------------------
+
+
+
+
+
+if(prenomControle()) {
+
 localStorage.setItem("formulaireValues2", JSON.stringify(formulaireValues2));  // va cree un objet formulaireValues mais pas ce qu on attend , car il a besoin d un string dans la methode . check l appli du localstorage ce sera ecrit object object .
-// c et pr ca on a rajouter JSON.stringify et la ca fonctionne on a acces a tous les sections du formulaireValues
-//↑ nickel a tt recuperer ds le local storage.
-// mettre les valeurs du form et mettre les produits selectionnes dans l obet a envoyer vers le serveur 
-//2 objets que je met dans un objet 
+} else{
+    alert("veuillez bien remplir le formulaire");
+}
+
+
+
+
+    // c et pr ca on a rajouter JSON.stringify et la ca fonctionne on a acces a tous les sections du formulaireValues
+    //↑ nickel a tt recuperer ds le local storage.
+    // mettre les valeurs du form et mettre les produits selectionnes dans l obet a envoyer vers le serveur 
+    //2 objets que je met dans un objet 
 
 const aEnvoyer = {
    produitEnregistrerDansLocalStorage,
@@ -289,8 +329,8 @@ console.log(aEnvoyer);
 });    
 
 
-//----------------------Mettre le contenu du local storage ds le champs du formulaire ------------ en gros que les données entrée ds le form reste la meme si je reactualise la page ou je vais chercher un autre produit 
-//----------------------prendre la key ds le localstorage et la mettre ds une variable------------
+//----------------------**********************Mettre le contenu du local storage ds le champs du formulaire*****************-------------------- en gros que les données entrée ds le form reste la meme si je reactualise la page ou je vais chercher un autre produit 
+//--------------------------------------------------prendre la key ds le localstorage et la mettre ds une variable-----------------------------------------------------------------
 
 const dataLocalStorage = localStorage.getItem("formulaireValues2");
 
@@ -314,11 +354,19 @@ console.log(dataLocalStorageObject);
 
 //3eme methode la meilleur et la + pro ! avec une fonction pr que le champ du formulaire soit rempli par les donnees du localstorage si elle existe
 
-function remplirInputDepuisLocalStorage(){
-    document.querySelector().value = dataLocalStorageObject
-}
+function remplirInputDepuisLocalStorage(input){
+    document.querySelector(`#${input}`).value = dataLocalStorageObject[input];
+};
+
+remplirInputDepuisLocalStorage("prenom");  // -> laisse le prenom ds le formulaire via ce qui se trouve ds le localstorage
+remplirInputDepuisLocalStorage("nom");    // -> idem 
+remplirInputDepuisLocalStorage("telephone");    // -> idem 
+remplirInputDepuisLocalStorage("adresse");    // -> idem 
+remplirInputDepuisLocalStorage("email");    // -> idem 
+remplirInputDepuisLocalStorage("ville");    // -> idem 
 
 
 
+//--------------*******************Formulaire validation du champ avc conditions avt envoi ds local storage*********************---------------------------------
 
-
+ 
