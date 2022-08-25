@@ -283,6 +283,7 @@ function prenomControle(){
         return true; 
     } else {
         console.log("ko");
+        alert('chiffre et symbole ne sont pas autorisé ne pas depasser 20 charactere merci')
         return false;
     };
     console.log("lePrenom");
