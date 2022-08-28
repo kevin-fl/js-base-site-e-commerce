@@ -128,6 +128,10 @@ footer {
   align-items: center;
   width: auto;
 }
+#form .couleurChampMissing {
+  color: yellow;
+  font-weight: 700;
+}
 #form input {
   background-color: white;
   width: 40vh;

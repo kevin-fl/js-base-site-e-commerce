@@ -178,6 +178,11 @@ footer{
     align-items: center;
     width: auto;
 
+    .couleurChampMissing{
+        color: yellow;
+        font-weight: 700;
+        
+    }
     input{
         background-color: white;
         width: 40vh;

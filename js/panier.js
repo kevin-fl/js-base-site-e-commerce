@@ -4,7 +4,7 @@ console.log(produitEnregistrerDansLocalStorage);
 //ln recup ce qui a dans le local storage et je peux le voir dans la console
 
 
-//-----------------------******************************Affichage des produits du panier***************************------------------------------------------------------- 
+//******************************************************Affichage des produits du panier********************************************************************************** 
 
 //selection de la classe ou je vais injecter le code HTML
 
@@ -57,7 +57,7 @@ if (produitEnregistrerDansLocalStorage === null || produitEnregistrerDansLocalSt
 //-------------------------------------------------------------------- display basket done -------------------------------------------------------------------------------
 
 
-// -------------------------------------***************************gestion button delete article*****************************-------------------------------------------------
+// ***************************************************************gestion button delete article**************************************************************************************************************
 
 //selection des references de touts les btn-supprimer 
 
@@ -130,7 +130,7 @@ btn_supprime_tout_js.addEventListener('click', (e) => {
 
 // ↑FIN -------------------------------------------------LE BOUTON POUR VIDER TT LE PANIER----------------------------------------------------------------------------↑FIN 
 
-//--------------------------------------------******************MONTANT TOTAL DU PANIER **********************------------------------------------------------------------
+//************************************************************MONTANT TOTAL DU PANIER ************************************************************************************
 // partie price --> declarer variable pr pouvoir y mettre les prix qui sont presents dans le panier
 
 let priceTotalCalculated = [];
@@ -171,8 +171,7 @@ positionElement4.insertAdjacentHTML("beforeend", affichagePriceHtml);
 //--------------------------------------------------------------FIN montant du panier ↑----------------------------------------------------------------------------------
 
 
-//-------------------------------------******************************FORMULAIRE ***********************************-------------------------------------------------------------------
-
+//*************************************************************************FORMULAIRE ************************************************************************************
 
 //Le formulaire dans le html mais dans le js pour pouvoir interagir avec 
 
@@ -189,7 +188,8 @@ const afficherFormulaireHtml = () => {
         <h2 id="h2form">FORMULAIRE A REMPLIR POUR VOTRE COMMANDE </h2>
         
         <form action="#" id="form">
-            <label for="prenom"> Prenom</label>
+
+        <label for="prenom"> Prenom</label><span id="prenomMissing" class="couleurChampMissing"></span>
         <input type="text" id="prenom" name="prenom" 
         minlength="4" maxlength="14" size="16" placeholder="prenom">
         
@@ -265,7 +265,7 @@ btnEnvoyerForm.addEventListener("click", (e) => {
     }
 
     //appel de l instance de la Class Formulaire pr créer l objet formulaireValues2
-    const formulaireValues2 = new Formulaire("prenom");     //("prenom") par exemple pr juste recup le prenom 
+    const formulaireValues2 = new Formulaire();     //("prenom") par exemple pr juste recup le prenom 
 
     console.log("formulaireValues2");
     console.log(formulaireValues2);
@@ -275,34 +275,43 @@ btnEnvoyerForm.addEventListener("click", (e) => {
     // NB : je recup les valeurs en storage car ce n est pas une vrai api , sinon j aurais utiliser fetch post ! ;)
 
 
-    //-----------------****************************************GESTION VALIDATION DU FORMULAIRE********************************------------------------------------------------
+    //**********************************************************GESTION VALIDATION DU FORMULAIRE*************************************************************************
     // ---------utilisation des regex--------------------- NB y a des createur de regex sur le net , plus simple
 
     const textAlert = (value) => {
         return `${value} "chiffre et symbole pas autorisé ne pas depasser 20 charact merci"`;
 
-    }
+    };
 
-    const textAlertCp =  (value) => {
-        return `${value}" seul les chiffres sont acceptés merci"`;
-    }
-
-    const regExCodePostale = (value) => {
-        return /^[0-9]{3,7}$/.test(value);
-    }
     //↓ ceci s appelle une expression de fonction , on declare une const puis fonction fleché
     const regExPrenomNomVille = (value) => {
-        return /^[A-Za-z]{2,20}$/.test(value);
-    }
+        return /^[A-Z a-z]{2,20}$/.test(value);
+    };
+    
+    const regExCodePostale = (value)=> {
+        return /^[0-9]{5}$/.test(value);
+    };
+    
+    const regEmail = (value)=> {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+    };
+
+    const regExAdresse = (value) => {
+        return /^[A-Z a-z 0-9]{5,50}$/.test(value);   // j ai mis des espaces pr accepter espaces ds le form , sinon mettre /s a la fin du 0-9/s]
+    };
+
+
 
     function prenomControle() {
         // controle la validite du prenom 
         const lePrenom = formulaireValues2.prenom;
         if (regExPrenomNomVille(lePrenom)) {    // {2,20} entre min 2 et max 20 lettres , on appel ca les quantificateurs
+            document.querySelector("#prenomMissing").textContent = "";   //.textContent permet de raj du texte 
             //console.log("ok");
             return true;
         } else {
             //console.log("ko");
+            document.querySelector("#prenomMissing").textContent = "veuillez remplir correctement le prenom";   //.textContent permet de raj du texte 
             alert(textAlert("Prenom :"));
             return false;
         }
@@ -322,22 +331,43 @@ btnEnvoyerForm.addEventListener("click", (e) => {
             return false;
         }
     }
-
     function codePostaleControle() {
-        //controle de la validite du cp
+        //controle validite du code postale 
         const leCodePostale = formulaireValues2.codePostale;
-        if (regExCodePostale(leCodePostale)){
-            console.log("code postale");
-        return true;
+        if (regExCodePostale(leCodePostale)) {
+            console.log("true code postale controle");
+            return true;
         } else {
-            alert(textAlertCp("code Postale"));
+            alert("code postale : doit etre composé de 5 chiffres");   // pr touts les alert a remplacer par la suite part une fenetre modale
             return false;
-
+        }
+    }
+    function emailControle() {
+        //controle validite de l email
+        const leEmail = formulaireValues2.email;
+        if (regEmail(leEmail)) {
+            console.log("true email controle");
+            return true;
+        } else {
+            alert("l'email est incorrecte");   // pr touts les alert a remplacer par la suite part une fenetre modale
+            return false;
         }
     }
 
+    function adresseControle() {
+        const lAdresse = formulaireValues2.adresse;
+        if (regExAdresse(lAdresse)) {
+           // console.log("true adresse controller");
+            return true;
+        } else {
+            alert("l adresse est incorrect , 5 caracteres min. 50 caracteres max. pas de symboles speciaux");
+            return false;
+        }
+    }
+
+
     // controle validité du formulaire avant envoi et surtt stockage dans le localstorage
-    if (prenomControle() && nomControle() && codePostaleControle) {
+    if (prenomControle() && nomControle() && codePostaleControle() && emailControle() && adresseControle()) {
         //mettre l objet formulaireValues2 ds le local storage
         localStorage.setItem("formulaireValues2", JSON.stringify(formulaireValues2));  // va cree un objet formulaireValues mais pas ce qu on attend , car il a besoin d un string dans la methode . check l appli du localstorage ce sera ecrit object object .
         //console.log('prenomControle');
@@ -349,23 +379,7 @@ btnEnvoyerForm.addEventListener("click", (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
     //↑---------------****************************FIN - GESTION VALIDATION DU FORMULAIRE**************************************-------------------------------------------------------------
-
-
-
-
-
-
-
 
 
     // c et pr ca on a rajouter JSON.stringify et la ca fonctionne on a acces a tous les sections du formulaireValues
@@ -386,7 +400,7 @@ btnEnvoyerForm.addEventListener("click", (e) => {
 });
 
 
-//----------------------**********************Mettre le contenu du local storage ds le champs du formulaire*****************-------------------- en gros que les données entrée ds le form reste la meme si je reactualise la page ou je vais chercher un autre produit 
+//***********************************************Mettre le contenu du local storage ds le champs du formulaire*****************************************************en gros que les données entrée ds le form reste la meme si je reactualise la page ou je vais chercher un autre produit 
 //--------------------------------------------------prendre la key ds le localstorage et la mettre ds une variable-----------------------------------------------------------------
 
 const dataLocalStorage = localStorage.getItem("formulaireValues2");
@@ -425,5 +439,4 @@ remplirInputDepuisLocalStorage("ville");    // -> idem
 
 
 //--------------*******************Formulaire validation du champ avc conditions avt envoi ds local storage*********************---------------------------------
-
 
