@@ -23,6 +23,9 @@
   background-color: bisque;
   width: 80vw;
 }
+.mise-en-page-produit img {
+  vertical-align: bottom;
+}
 
 .grid {
   display: grid;
@@ -110,6 +113,7 @@ footer {
   text-align: center;
   text-decoration: underline;
   background-color: bisque;
+  padding: 15px;
 }
 
 #formulaire-commande {

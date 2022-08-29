@@ -40,6 +40,9 @@
     border: 1px solid black;
     background-color: bisque;
     width: 80vw;
+    img{
+        vertical-align: bottom;  // pour eviter petit espace entre l image et la div 
+    }
 }
 
 .grid{
@@ -144,6 +147,7 @@ footer{
 }
 
 #container-produits-panier{
+    
     background-color: bisque;
     text-align: center;
 }
@@ -159,6 +163,8 @@ footer{
     text-decoration:underline ;
     //text-decoration-color: turquoise;
     background-color: bisque;
+    padding: 15px;
+
 }
 
 #formulaire-commande{
@@ -169,6 +175,7 @@ footer{
     justify-content: center;
     margin-top: 30px;
     width: auto;
+    
 }
 
 #form{
