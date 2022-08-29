@@ -69,9 +69,12 @@ const structureProduits2 = `
 <form>
     <label for="option_produit">choisis l option </label>
         <select name="option_produit" id="option_produit">    
-       
         </select>    
-        
+       
+    <label for="quantite_produit">choisir la quantite </label>
+        <select name="quantite_produit" id="quantite_produit">    
+        </select>    
+         
         <button id="btn-envoyer" type="submit" name="btn-envoyer">Ajouter au panier</button>
         </form>
     </div>
@@ -112,6 +115,18 @@ const positionElement3 = document.querySelector("#option_produit");
 
 positionElement3.innerHTML = structureOptions;
 
+
+//Quantite : choisir la quantite de produits possible 
+const structureQuantite = `
+<option value ="1">1</option>
+<option value ="2">2</option>
+<option value ="3">3</option>
+`;
+// QUANTITE : afficher les quantites de structureQuantite ds le form
+const positionElementQuantite = document.querySelector("#quantite_produit ");
+//console.log("positionElementQuantite");
+//console.log(positionElementQuantite);
+positionElementQuantite.innerHTML = structureQuantite;
 
 //-------------------GESTION DU PANIER 
 // RECUP DES DONNEES SELECTIONNES PAR L UTILISATEUR ET ENVOIE AU PANIER 
