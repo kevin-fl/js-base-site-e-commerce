@@ -193,22 +193,22 @@ const afficherFormulaireHtml = () => {
         <input type="text" id="prenom" name="prenom" 
         minlength="4" maxlength="14" size="16" placeholder="prenom">
         
-        <label for="nom">Nom</label>
+        <label for="nom">Nom</label><span id ="nomMissing" class="couleurChampMissing"></span>
         <input type="text" id="nom" name="nom" placeholder="nom">
         
-        <label for="adresse">Adresse</label>
+        <label for="adresse">Adresse</label><span id ="adresseMissing" class="couleurChampMissing"></span>
         <textarea type="text" id="adresse" name="adresse"></textarea>
         
-        <label for="ville">Ville</label>
+        <label for="ville">Ville</label><span id ="villeMissing" class="couleurChampMissing"></span>
         <input type="text" id="ville" name="ville">
 
-        <label for="codePostale">Code Postale</label>
+        <label for="codePostale">Code Postale</label><span id ="codepostaleMissing" class="couleurChampMissing"></span>
         <input type="number" id="codePostale" name="codePostale" placeholder ="number">
 
-        <label for="telephone">telephone</label>
+        <label for="telephone">telephone</label><span id ="telMissing" class="couleurChampMissing"></span>
         <input type="text" id="telephone" name="telephone" placeholder="champ obligatoire">
         
-        <label for="email">E-mail</label>
+        <label for="email">E-mail</label><span id ="emailMissing" class="couleurChampMissing"></span>
         <input type="email" id="email" name="email" placeholder="champ obligatoire">
         <button id="envoyerform" type="submit" name="envoyerform">Valider la commande</button>
     </form>
@@ -300,13 +300,20 @@ btnEnvoyerForm.addEventListener("click", (e) => {
         return /^[A-Z a-z 0-9]{5,50}$/.test(value);   // j ai mis des espaces pr accepter espaces ds le form , sinon mettre /s a la fin du 0-9/s]
     };
 
+    const regExTelephone = (value) => {
+        return /^[0-9]{5,12}$/.test(value);
+    };
 
+    // function pr gerer l affichage au dessus de l input  du remplissage du champ correctement , de touts les champs au lieu de faire un par un 
 
+    function dataChampManquant(queryselectorId){
+        document.querySelector(`#${queryselectorId}`).textContent = "";
+    };
     function prenomControle() {
         // controle la validite du prenom 
         const lePrenom = formulaireValues2.prenom;
         if (regExPrenomNomVille(lePrenom)) {    // {2,20} entre min 2 et max 20 lettres , on appel ca les quantificateurs
-            document.querySelector("#prenomMissing").textContent = "";   //.textContent permet de raj du texte 
+            dataChampManquant("prenomMissing");
             //console.log("ok");
             return true;
         } else {
@@ -324,32 +331,12 @@ btnEnvoyerForm.addEventListener("click", (e) => {
         //controle validite du nom
         const leNom = formulaireValues2.nom;
         if (regExPrenomNomVille(leNom)) {
+            dataChampManquant("nomMissing");
             console.log("true nomcontrole");
             return true;
         } else {
+            document.querySelector("#nomMissing").textContent = "veuillez bien remplir le nom";
             alert(textAlert("Nom :"));
-            return false;
-        }
-    }
-    function codePostaleControle() {
-        //controle validite du code postale 
-        const leCodePostale = formulaireValues2.codePostale;
-        if (regExCodePostale(leCodePostale)) {
-            console.log("true code postale controle");
-            return true;
-        } else {
-            alert("code postale : doit etre composé de 5 chiffres");   // pr touts les alert a remplacer par la suite part une fenetre modale
-            return false;
-        }
-    }
-    function emailControle() {
-        //controle validite de l email
-        const leEmail = formulaireValues2.email;
-        if (regEmail(leEmail)) {
-            console.log("true email controle");
-            return true;
-        } else {
-            alert("l'email est incorrecte");   // pr touts les alert a remplacer par la suite part une fenetre modale
             return false;
         }
     }
@@ -357,17 +344,72 @@ btnEnvoyerForm.addEventListener("click", (e) => {
     function adresseControle() {
         const lAdresse = formulaireValues2.adresse;
         if (regExAdresse(lAdresse)) {
+            dataChampManquant("adresseMissing");
            // console.log("true adresse controller");
             return true;
         } else {
-            alert("l adresse est incorrect , 5 caracteres min. 50 caracteres max. pas de symboles speciaux");
+            document.querySelector("#adresseMissing").textContent = "veuillez remplir correctement l adresse";
+            alert(textAlert("adresse :"));
             return false;
         }
     }
 
+    function villeControle() {
+        //controle validite du code postale 
+        const laVille = formulaireValues2.ville;
+        if (regExPrenomNomVille(laVille)) {
+            dataChampManquant("villeMissing");
+           // console.log("true ville controle");
+            return true;
+        } else {
+            document.querySelector("#villeMissing").textContent = "veuillez bien remplir la ville";
+            alert(textAlert("ville :"));   // pr touts les alert a remplacer par la suite part une fenetre modale
+            return false;
+        }
+    }
+    function codePostaleControle() {
+        //controle validite du code postale 
+        const leCodePostale = formulaireValues2.codePostale;
+        if (regExCodePostale(leCodePostale)) {
+            dataChampManquant("codepostaleMissing");
+            console.log("true code postale controle");
+            return true;
+        } else {
+            document.querySelector("#codepostaleMissing").textContent = "veuillez bien remplir le code postale";
+            alert("code postale : doit etre composé de 5 chiffres");   // pr touts les alert a remplacer par la suite part une fenetre modale
+            return false;
+        }
+    }
+
+    function emailControle() {
+        //controle validite de l email
+        const leEmail = formulaireValues2.email;
+        if (regEmail(leEmail)) {
+            dataChampManquant("emailMissing");
+            console.log("true email controle");
+            return true;
+        } else {
+            document.querySelector("#emailMissing").textContent = "veuillez mettre un email valide";
+            alert("l'email est incorrecte");   // pr touts les alert a remplacer par la suite part une fenetre modale
+            return false;
+        }
+    }
+
+    function telephoneControle(){
+        const leTelephone = formulaireValues2.telephone;
+        if(regExTelephone(leTelephone)){
+            dataChampManquant("telMissing");
+            console.log("tel true controle");
+            return true;
+        } else {
+            document.querySelector("#telMissing").textContent= "veuillez entrer un num de tel valide";
+            alert("le tel est incorrect");
+            return false;
+        }
+    }
 
     // controle validité du formulaire avant envoi et surtt stockage dans le localstorage
-    if (prenomControle() && nomControle() && codePostaleControle() && emailControle() && adresseControle()) {
+    if (prenomControle() && nomControle() && adresseControle() && villeControle() && codePostaleControle() && emailControle() && telephoneControle()) {
         //mettre l objet formulaireValues2 ds le local storage
         localStorage.setItem("formulaireValues2", JSON.stringify(formulaireValues2));  // va cree un objet formulaireValues mais pas ce qu on attend , car il a besoin d un string dans la methode . check l appli du localstorage ce sera ecrit object object .
         //console.log('prenomControle');
