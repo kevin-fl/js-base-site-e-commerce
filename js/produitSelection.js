@@ -157,14 +157,20 @@ btn_envoyerAuPanier.addEventListener("click", (event) => {
     const choixForm = idForm.value;
     //console.log(choixForm);
 
+
+    // QUANTITE : Mettre la quantite dans une variable , donc la on peut selectionner la quantite 
+    const choixQuantite = positionElementQuantite.value;
+    console.log("choixQuantite");
+    console.log(choixQuantite);
+
     //recuperation des valeurs du formulaires
 
     let optionProduitRecup = {
         productName: idProduitSelectionner.productName,                         // du tableau response
         id_produitSelectionner: idProduitSelectionner._id,                          // qui recup l id selectionner↑
         option_produit: choixForm,                                                   // dans le label du form ln101
-        quantite: 1,
-        price: idProduitSelectionner.price / 100                                // pour avoir prix en euros et pas en centimes d euros               
+        quantite: choixQuantite,
+        price: (idProduitSelectionner.price * choixQuantite) / 100                                // pour avoir prix en euros et pas en centimes d euros               
     };
 
     console.log(optionProduitRecup);  // permet l ajout au panier 

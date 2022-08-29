@@ -35,7 +35,7 @@ if (produitEnregistrerDansLocalStorage === null || produitEnregistrerDansLocalSt
 
         structureProduitPanier = structureProduitPanier + `
         <div class="container-recap-produit-panier">
-            <div> Quantite 1 - ${produitEnregistrerDansLocalStorage[k].productName} - ${produitEnregistrerDansLocalStorage[k].option_produit} </div>    
+            <div> quantite : ${produitEnregistrerDansLocalStorage[k].quantite}- ${produitEnregistrerDansLocalStorage[k].productName} - ${produitEnregistrerDansLocalStorage[k].option_produit} </div>    
                 <div>${produitEnregistrerDansLocalStorage[k].price} <button class="btn-supprimer"> supprimer </button> </div>
         </div>
         `;
