@@ -285,7 +285,7 @@ btnEnvoyerForm.addEventListener("click", (e) => {
 
     //↓ ceci s appelle une expression de fonction , on declare une const puis fonction fleché
     const regExPrenomNomVille = (value) => {
-        return /^[A-Z a-z]{2,20}$/.test(value);
+        return /^([A-Z a-z]{2,20})?([-]{0,1})?([A-Z a-z]{2,20})$/.test(value);   // ?([-])->  veut dire apres le premier bloc d instructions verifie que le tiret est la 0 ou 1 fois 
     };
     
     const regExCodePostale = (value)=> {
@@ -468,7 +468,14 @@ console.log(dataLocalStorageObject);
 //3eme methode la meilleur et la + pro ! avec une fonction pr que le champ du formulaire soit rempli par les donnees du localstorage si elle existe
 
 function remplirInputDepuisLocalStorage(input) {
-    document.querySelector(`#${input}`).value = dataLocalStorageObject[input];
+    if (dataLocalStorageObject == null) {
+        console.log("le local storage a pour valeur null");
+        
+    } else {
+
+        document.querySelector(`#${input}`).value = dataLocalStorageObject[input];
+
+    }
 };
 
 remplirInputDepuisLocalStorage("prenom");  // -> laisse le prenom ds le formulaire via ce qui se trouve ds le localstorage
